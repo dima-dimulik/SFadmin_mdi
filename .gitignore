@@ -1,2 +1,3 @@
-/add_user/tests/inventory
-/zabbix-agent/tests/inventory
+add_user/tests/inventory
+zabbix-agent/tests/inventory
+add_user/vars/main.yml
