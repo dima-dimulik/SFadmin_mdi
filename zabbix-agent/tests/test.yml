@@ -1,5 +1,5 @@
 ---
-- hosts: 84.252.141.153
-  remote_user: dima
+- hosts: servers
+  remote_user: ans
   roles:
     - zabbix-agent

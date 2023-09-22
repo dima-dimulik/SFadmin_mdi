@@ -1,3 +1,4 @@
 add_user/tests/inventory
-add_user/vars/main.yml
+add_user/vars/
+zabbix-agent/vars/
 debug.log
