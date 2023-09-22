@@ -1,2 +1,3 @@
 add_user/tests/inventory
 add_user/vars/main.yml
+debug.log
