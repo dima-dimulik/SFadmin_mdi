@@ -1,1 +1,37 @@
-My_test_git_repo
+copy_pkg.yml
+Пример playbook копирования пакетов с локального сервера на удаленный с последующей установкой (на примерер filebeat).
+
+elasticsearch_reconfig.yml
+Пример копирования конфигов elasticsearch на удаленный сервер.
+
+filebeat_reconfig.yml
+Пример копирования конфигов сертификатов filebeat на удаленный сервер.
+
+install_elk.yml
+Пример копирования пакетов elasticsearch и kibana с резервным копирование конфигов после установки.
+
+install_filebeat.yml
+Пример установки filebeat на удаленные сервера с ОС Ubuntu и CentOS.
+
+install_mail_serv2.yml
+Пример установки комплекта пакетов для развертывания Mail Server.
+
+install_pak_serv2.yml
+Пример установки комплекта пакетов для server2: 
+nginx
+apache
+php
+bind
+
+install_postgresql.yml
+Пример установки postgresql server 12.
+
+kibana_reconfig.yml
+Пример копирования конфигов kibana на удаленный сервер.
+
+role/zabbix-agent
+Роль дляустановки zabbix-agent на удаленные сервера.
+
+
+
+
