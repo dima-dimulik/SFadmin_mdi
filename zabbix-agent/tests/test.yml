@@ -1,5 +1,0 @@
----
-- hosts: servers
-  remote_user: ans
-  roles:
-    - zabbix-agent
