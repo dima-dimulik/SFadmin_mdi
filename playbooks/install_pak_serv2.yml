@@ -1,0 +1,14 @@
+---
+- hosts: all
+  remote_user: dima
+  become: yes
+
+  tasks:
+  - name:  Install packeges to server 2
+##### NGINX Apache PHP BIND############
+    apt: pkg={{ item }} state=latest
+    with_items:
+      - nginx
+      - apache2
+      - php7.4
+      - bind9

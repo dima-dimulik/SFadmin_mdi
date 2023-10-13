@@ -1,0 +1,39 @@
+---
+- hosts: server3
+  remote_user: dima
+  become: yes
+  tasks:
+    - name: Copy packages
+      copy:
+        src: "{{ item.src }}"
+        dest: /home/dima/installers/
+        mode: 777
+        owner: dima
+        group: root
+      with_items:
+        - { src: /home/dima/installers/elasticsearch-7.17.13-x86_64.rpm}
+        - { src: /home/dima/installers/kibana-7.17.13-x86_64.rpm}
+    - name: Install elk
+      yum:
+        name: "{{ item.src }}"
+        state: present
+      with_items:
+        - { src: /home/dima/installers/elasticsearch-7.17.13-x86_64.rpm}
+        - { src: /home/dima/installers/kibana-7.17.13-x86_64.rpm}
+    - name: Create folder Backup_default_configs
+      file:
+        path: /home/dima/backup_default_configs
+        state: directory
+        mode: "0777"
+        owner: dima
+        group: root
+    - name: Copy_default_configs
+      copy:
+        src: "{{ item.src }}"
+        dest: /home/dima/backup_default_configs/
+        mode: 777
+        owner: dima
+        remote_src: true
+      with_items:
+        - { src: /etc/elasticsearch/elasticsearch.yml}
+        - { src: /etc/kibana/kibana.yml}

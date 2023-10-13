@@ -1,0 +1,6 @@
+---
+- hosts: servers
+  remote_user: dima
+  become: yes
+  roles:
+    - zabbix-agent

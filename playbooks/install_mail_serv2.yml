@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: dima
+  become: yes
+
+  tasks:
+  - name:  Install packeges to server 2
+#####for Mail Server############
+    apt: pkg={{ item }} state=latest
+    with_items:
+      - postfix
+      - dovecot-core
+      - dovecot-imapd
+      - dovecot-pop3d
+      - dovecot-lmtpd

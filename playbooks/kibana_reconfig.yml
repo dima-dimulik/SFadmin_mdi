@@ -1,0 +1,25 @@
+---
+- hosts: server3
+  remote_user: dima
+  become: yes
+  tasks:
+    - name: Copy_config
+      copy:
+        src: /home/dima/new_configs/kibana.yml
+        dest: /etc/kibana/kibana.yml
+        owner: root
+        group: kibana
+        mode: 0660
+    - name: Copy certs for kibana
+      copy:
+        src: /home/dima/crt
+        dest: /etc/
+        mode: 0644
+        owner: root
+          
+
+    - name: Restart service kibana 
+      service:
+        name: kibana
+        state: restarted
+        enabled: true

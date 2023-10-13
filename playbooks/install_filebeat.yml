@@ -1,0 +1,38 @@
+- hosts: servers
+  remote_user: dima
+  become: yes
+
+  tasks:
+   - name: Create installers
+     file:
+       path: /home/dima/installers
+       state: directory
+       mode: '0777'
+       owner: dima
+       group: root
+
+   - name: Copy packages
+     copy:
+       src: /home/dima/installers
+       dest: /home/dima/
+       mode: '0777'
+       owner: dima
+       group: root
+
+   - name: Install filebeat
+     apt:
+       deb: /home/dima/installers/filebeat-7.17.13-amd64.deb
+     
+     when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+   - name: Install filebeat
+     yum: 
+       name: /home/dima/installers/filebeat-7.17.13-x86_64.rpm
+       state: present
+     when: ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS'  
+   
+   - name: Restart service filebeat
+     service:
+       name: filebeat
+       state: started
+       enabled: true

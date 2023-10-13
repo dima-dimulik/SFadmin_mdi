@@ -1,0 +1,26 @@
+
+---
+- hosts: servers
+  remote_user: dima
+  become: yes
+  tasks:
+    - name: Copy_config
+      copy:
+        src: /home/dima/new_configs/filebeat.yml
+        dest: /etc/filebeat/filebeat.yml
+        owner: root
+        group: root
+        mode: 0600
+    - name: Copy certs for kibana
+      copy:
+        src: /home/dima/crt
+        dest: /etc/
+        mode: 0644
+        owner: root
+          
+
+    - name: Restart service filebeat
+      service:
+        name: filebeat
+        state: restarted
+        enabled: true

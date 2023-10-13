@@ -1,0 +1,13 @@
+---
+- name: Copy installers 
+  copy:
+    src: /home/dima/installers
+    dest: /home/dima/installers
+
+- name: Install filebeat
+   apt: /home/dima/installers/filebeat-7.17.13-amd64.deb
+   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: Install filebeat
+   apt: /home/dima/installers/filebeat-7.17.13-x86_64.rpm
+   when: ansible_distribution == 'RedHat' or ansible_distribution == 'Centos'  

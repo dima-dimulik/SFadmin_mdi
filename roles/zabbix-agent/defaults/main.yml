@@ -1,0 +1,15 @@
+---
+# defaults file for zabbix-agent
+zabbix_agent_user: "zabbix"
+zabbix_agent_group: "zabbix"
+zabbix_agent_os_version: "3.0"
+zabbix_agent_release_version: "6.4"
+zabbix_agent_version: "6.4.7"
+zabbix_agent_arch: "amd64"
+zabbix_agent_package: zabbix_agent-{{zabbix_agent_version}}-linux-{{zabbix_agent_os_version}}-{{zabbix_agent_arch}}-static.tar.gz
+zabbix_agent_url: https://cdn.zabbix.com/zabbix/binaries/stable/{{zabbix_agent_release_version}}/{{zabbix_agent_version}}/{{zabbix_agent_package}}
+zabbix_agent_log: "/var/log/zabbix-agent"
+
+# for zabbix config
+zabbix_agent_server: 10.0.0.1
+zabbix_agent_server_active: 10.0.0.1

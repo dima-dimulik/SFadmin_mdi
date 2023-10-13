@@ -1,0 +1,31 @@
+---
+- name: install postgresql-server
+  hosts: server3
+  become: true
+  tasks:
+    - name: Install postgres
+      yum:
+        name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+        state: present
+    - name: Install packages
+      yum:
+        name:
+          - postgresql12-server
+          - postgresql
+        state: present
+
+    - name: Check if PostgreSQL is initialized
+      stat:
+        path: "/var/lib/pgsql/data/pg_hba.conf"
+      register: postgres_data
+
+    - name: Initialize PostgreSQL
+      shell: "postgresql-setup initdb"
+      when: not postgres_data.stat.exists
+
+    - name: Start and enable service
+      service:
+        name: postgresql-12
+        state: started
+        enabled: true
+
